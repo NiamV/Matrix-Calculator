@@ -1,8 +1,16 @@
 class Matrix(object):
-    #Entries need to be inputted as a list of lists of rows
+    #Entries need to be inputted as a list of lists of entries in a row
     def __init__(self,entries):
         self.entries = entries
 
+    #Returns the number of rows in the matrix
+    def numberOfRows(self):
+        return len(self.entries)
+
+    #Returns the number of columns in the matrix
+    def numberOfColumns(self):
+        return len(self.entries[0])
+    
     #Prints out the matrix
     def printMatrix(self):
         for i in self.entries:
@@ -53,6 +61,8 @@ class Matrix(object):
                     currentDet += int(newMatrix.determinant()) * self.entries[0][i] * multiplier
                 return currentDet
 
-M1 = Matrix([[1,2,-4,-3],[-2,3,-15,7],[-3,5,-2,3],[4,-2,-1,-2]])
+M1 = Matrix([[1,2],[2,1],[-1,3]])
 
-print(M1.determinant())
+print(M1.numberOfColumns())
+
+
