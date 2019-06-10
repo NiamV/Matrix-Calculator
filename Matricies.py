@@ -4,11 +4,11 @@ class Matrix(object):
         self.entries = entries
 
     #Returns the number of rows in the matrix
-    def numberOfRows(self):
+    def Rows(self):
         return len(self.entries)
 
     #Returns the number of columns in the matrix
-    def numberOfColumns(self):
+    def Columns(self):
         return len(self.entries[0])
     
     #Prints out the matrix
@@ -61,8 +61,30 @@ class Matrix(object):
                     currentDet += int(newMatrix.determinant()) * self.entries[0][i] * multiplier
                 return currentDet
 
-M1 = Matrix([[1,2],[2,1],[-1,3]])
+def multiplyMatricies(Matrix1, Matrix2):
+    #Check to see if the matricies can be multiplied
+    if Matrix1.Columns() != Matrix2.Rows():
+        return "The matrixies are not multiplicatively conformable"
+    else:
+        productMatrixEntries = []
+        
+        #Finds the entries for each cell of the product matrix and forms a list
+        for i in range (0,Matrix1.Rows()):
+            productMatrixRow = []
+            for j in range(0,Matrix2.Columns()):
+                entry = 0
+                for k in range(0,Matrix1.Columns()):
+                    entry += Matrix1.entries[i][k] * Matrix2.entries[k][j]
+                productMatrixRow.append(entry)
+            productMatrixEntries.append(productMatrixRow)
 
-print(M1.numberOfColumns())
+        return Matrix(productMatrixEntries)
+
+M1 = Matrix([[1,2],[2,1],[-1,3]])
+M2 = Matrix([[3,2,5],[-2,1,-2]])
+
+print(multiplyMatricies(M1,M2).printMatrix())
+
+
 
 
