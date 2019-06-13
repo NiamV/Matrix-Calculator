@@ -13,16 +13,31 @@ class Matrix(object):
     
     #Prints out the matrix
     def printMatrix(self):
+        k = 0
         for i in self.entries:
-            row = "|    "
+            if k == 0:
+                row = "/   "
+            elif k == len(self.entries) - 1:
+                row = "\   " 
+            else:
+                row = "|   "
+
             for j in i:
                 noSpaces = 6 - len(str(j))
                 space = "  "
                 for i in range(0,noSpaces):
                     space += " "
                 row = row + str(j) + space
-            row = row + "|"
+            
+            if k == 0:
+                row = row + "\ "
+            elif k == len(self.entries) - 1:
+                row = row + "/ "
+            else:
+                row = row + "| " 
+            
             print(row)
+            k += 1
 
     #Finds the determinant of the matrix - works for any size of square matrix
     def determinant(self):
